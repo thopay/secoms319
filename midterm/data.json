@@ -1,0 +1,72 @@
+{
+    "Clothing": [
+        {
+            "productId": "product1_1",
+            "productName": "Black T-shirt",
+            "brand": "simpleShirts",
+            "desc": "A comfortable loose fitting black T-shirt",
+            "price": "10.95",
+            "url": "./images/blackT.png"
+        },
+        {
+            "productId": "product1_2",
+            "productName": "White T-shirt",
+            "brand": "simpleShirts",
+            "desc": "A comfortable loose fitting white T-shirt",
+            "price": "11.95",
+            "url": "./images/whiteT.jpg"
+        },
+        {
+            "productId": "product1_3",
+            "productName": "Long Sleeve",
+            "brand": "longShirts",
+            "desc": "A teal fully cotton long sleeve shirt",
+            "price": "14.98",
+            "url": "./images/longSleeve.png"
+        },
+        {
+            "productId": "product1_4",
+            "productName": "Red T-shirt",
+            "brand": "simpleShirts",
+            "desc": "A comfortable loose fitting red T-shirt",
+            "price": "14.98",
+            "url": "./images/redShirt.png"
+        }
+    ],
+    "Accesories": [
+        {
+            "productId": "product2_1",
+            "productName": "Blue Sunglasses",
+            "brand": "yayBan",
+            "desc": "Blue lens sunglasses that will look great on you",
+            "price": "17.33",
+            "url": "./images/sunglass.jpg"
+        },
+        {
+            "productId": "product2_2",
+            "productName": "Black Sunglasses",
+            "brand": "bokley",
+            "desc": "Black sunglasses with orange accents on the sides",
+            "price": "14.95",
+            "url": "./images/blackSunglasses.jpg"
+        },
+        {
+            "productId": "product2_2",
+            "productName": "Gold Bracelet",
+            "brand": "bigFlex",
+            "desc": "Golden bracelet with chain like linking",
+            "price": "82.92",
+            "url": "./images/goldBracelet.jpg"
+        }
+    ],
+    "Footwear": [
+        {
+            "productId": "product3_1",
+            "productName": "Hiking Boots",
+            "brand": "bootCo",
+            "desc": "Brown durable boots that are great for hiking",
+            "price": "67.63",
+            "url": "./images/brownBoot.jpg"
+        }
+    ]
+}
