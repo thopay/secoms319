@@ -1,10 +1,17 @@
-import React, { useState } from "react";
-import products from "./products";
+import React, { useState, useEffect } from "react";
 
 const App = () => {
+    const [products, setProducts] = useState([])
     const [quantities, setQuantities] = useState(
         Array(products.length).fill(0)
     );
+
+
+    useEffect(() => {
+        fetch("/products.json")
+            .then(response => response.json())
+            .then(data => {setProducts(data); setQuantities(Array(data.length).fill(0))})
+    }, [])
 
 // Add an array of US states
 const usStates = [
