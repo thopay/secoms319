@@ -82,7 +82,11 @@ const usStates = [
     
     // Update pageView state to "checkout" when the Checkout button is clicked
     const handleCheckoutClick = () => {
-        setPageView(1);
+        if (quantities.reduce((a, b) => a + b, 0) > 0) {
+            setPageView(1);
+        } else {
+            alert("Please add items to your cart before checking out.");
+        }
     };
     
     // Update pageView state to "order confirmation" when the Checkout button is clicked
@@ -238,7 +242,7 @@ const usStates = [
                                 <th className="px-4 py-2">Item</th>
                                 <th className="px-4 py-2">Name</th>
                                 <th className="px-4 py-2">Quantity</th>
-                                <th className="px-4 py-2">Price</th>
+                                <th className="px-4 py-2 text-right">Price</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -257,9 +261,9 @@ const usStates = [
                                         <td className="border px-4 py-2">{product.title}</td>
                                         <td className="border px-4 py-2">{quantities[index]}</td>
                                         {quantities[index] > 1 ? (
-                                            <td className="border px-4 py-2">{quantities[index]} x ${product.price.toFixed(2)} = ${(product.price * quantities[index]).toFixed(2)}</td>
+                                            <td className="border px-4 py-2 text-right">{quantities[index]} x ${product.price.toFixed(2)} = ${(product.price * quantities[index]).toFixed(2)}</td>
                                         ) : (
-                                            <td className="border px-4 py-2">${product.price.toFixed(2)}</td>
+                                            <td className="border px-4 py-2 text-right">${product.price.toFixed(2)}</td>
                                         )}
                                     </tr>
                                 )
@@ -268,13 +272,13 @@ const usStates = [
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td className="border px-4 py-2">Sales Tax (6.25%): ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * 0.0625).toFixed(2)}</td>
+                                <td className="border px-4 py-2 text-right">Sales Tax (6.25%): ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * 0.0625).toFixed(2)}</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td className="border px-4 py-2 font-bold">Total: ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * 1.0625).toFixed(2)}</td>
+                                <td className="border px-4 py-2 font-bold text-right">Total: ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * 1.0625).toFixed(2)}</td>
                             </tr>
                         </tbody>
                     </table>        
@@ -496,15 +500,16 @@ return (
                     </button>
                 </div>
             </nav>
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center p-10">
             <div className="bg-white p-8 rounded shadow-2xl w-1/2">
                 <h2 className="text-2xl font-bold mb-4">Order Confirmation</h2>
                 <table className="w-full mb-4">
                     <thead>
                         <tr>
                             <th className="text-left py-2">Item</th>
+                            <th className="text-left py-2">Name</th>
                             <th className="text-left py-2">Quantity</th>
-                            <th className="text-left py-2">Price</th>
+                            <th className="text-right py-2">Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -523,9 +528,9 @@ return (
                                         <td className="border px-4 py-2">{product.title}</td>
                                         <td className="border px-4 py-2">{quantities[index]}</td>
                                         {quantities[index] > 1 ? (
-                                            <td className="border px-4 py-2">{quantities[index]} x ${product.price.toFixed(2)} = ${(product.price * quantities[index]).toFixed(2)}</td>
+                                            <td className="border px-4 py-2 text-right">{quantities[index]} x ${product.price.toFixed(2)} = ${(product.price * quantities[index]).toFixed(2)}</td>
                                         ) : (
-                                            <td className="border px-4 py-2">${product.price.toFixed(2)}</td>
+                                            <td className="border px-4 py-2 text-right">${product.price.toFixed(2)}</td>
                                         )}
                                     </tr>
                                 )
@@ -534,13 +539,13 @@ return (
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td className="border px-4 py-2">Sales Tax (6.25%): ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * 0.0625).toFixed(2)}</td>
+                                <td className="border px-4 py-2 text-right">Sales Tax (6.25%): ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * 0.0625).toFixed(2)}</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td className="border px-4 py-2 font-bold">Total: ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * 1.0625).toFixed(2)}</td>
+                                <td className="border px-4 py-2 font-bold text-right">Total: ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * 1.0625).toFixed(2)}</td>
                             </tr>
                     </tbody>
                 </table>

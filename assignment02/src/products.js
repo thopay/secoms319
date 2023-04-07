@@ -1,40 +1,40 @@
 const products = [
     {
-        "title": "Sun Glasses",
-        "price": 100.0,
-        "description": "Lorem ipsum.",
-        "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f",
+        "title": "Pertex P90 Puffa Jacket Tan",
+        "price": 228.00,
+        "description": "Palace do make exceedingly good puffer jackets.",
+        "image": "https://cdn.shopify.com/s/files/1/0305/3289/products/Palace-2023-jkt-4747-CT_640x@2x.jpg?v=1675949430",
     },
     {
-        "title": "Shoes",
-        "price": 60.0,
-        "description": "Fresh.",
-        "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+        "title": "Downtown Jacket Blue",
+        "price": 498.00,
+        "description": "Rah dunno how you make this fabric but it's juice",
+        "image": "https://cdn.shopify.com/s/files/1/0305/3289/products/Palace-2023-tshirt6966-CT_640x@2x.jpg?v=1675698490"
     },
     {
-        "title": "Watch",
-        "price": 80.0,
-        "description": "Simple.",
-        "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+        "title": "Fluffy Cardigan Orange",
+        "price": 298.00,
+        "description": "This is a fluffy cardigan. It's orange. It's fluffy.",
+        "image": "https://cdn.shopify.com/s/files/1/0305/3289/products/Palace_2023_trouser7252_93adca49-7a0d-4936-989c-e1b9dc03888e_640x@2x.jpg?v=1675334004",
     },
     {
-        "title": "Headphones",
-        "price": 50.0,
-        "description": "Noise-cancelling.",
-        "image": "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=984&q=80",
+        "title": "Heavy Stripe Knit Orange",
+        "price": 158.00,
+        "description": "This is a heavy stripe knit. It's orange. It's heavy.",
+        "image": "https://cdn.shopify.com/s/files/1/0305/3289/products/Palace_2023_trouser7246_640x@2x.jpg?v=1680166312",
     },
     {
-        "title": "Backpack",
-        "price": 45.0,
-        "description": "Water-resistant.",
-        "image": "https://images.unsplash.com/photo-1514524865930-188150490d83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
+        "title": "Downtown Shirt Red",
+        "price": 128.00,
+        "description": "This is a downtown shirt. It's red. It's downtown.",
+        "image": "https://cdn.shopify.com/s/files/1/0305/3289/products/Palace_2023_cap_7595_3ad995a5-88f2-464c-80e1-37daa79da61f_640x@2x.jpg?v=1675419687",
     },
     {
-        "title": "Camera",
-        "price": 250.0,
-        "description": "DSLR.",
-        "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    },
+        "title": "Duck Baggies Jean White",
+        "price": 158.00,
+        "description": "This is a pair of duck baggies. They're white. They're duck.",
+        "image": "https://cdn.shopify.com/s/files/1/0305/3289/products/Palace_Winter_22_long_sleeve_5029_640x@2x.jpg?v=1675430221",
+    }
 ]
 
 export default products;
