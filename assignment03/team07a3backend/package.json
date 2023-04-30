@@ -1,0 +1,11 @@
+{
+  "name": "team07a3backend",
+  "version": "1.0.0",
+  "description": "A MongoDB/Express backend server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
