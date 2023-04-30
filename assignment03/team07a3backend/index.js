@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const Products = require('./dataSchema');
+const path = require("path");
 
 app.use(express.json());
 app.use(cors());
@@ -25,6 +26,10 @@ app.get('/', async (req, res) => {
 
 const port = process.env.PORT || 4000;
 const host =  'localhost';
+
+app.use("/images", express.static(path.join(__dirname, "./images")));
+
 app.listen(port, () => {
     console.log(`App listening at http://${host}:${port}`);
 });
+

@@ -1,7 +1,8 @@
 import './App.css';
 import Nav from './components/Nav';
 import Create from './components/Create';
-import { useState } from 'react';
+import View from './components/View';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('create');
@@ -9,7 +10,7 @@ function App() {
   return (
     <div className="bg-gray-100">
       <Nav currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      <Create />
+      {currentPage === 'create' ? <Create /> : <View />}
     </div>
   );
 }
