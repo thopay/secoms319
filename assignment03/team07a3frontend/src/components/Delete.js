@@ -16,6 +16,9 @@ const Delete = () => {
   }
 
   const handleDelete = (id) => {
+    if (window.confirm(`Are you sure you want to delete product with id ${id}?`) === false) {
+        return;
+    }
     fetch(`http://localhost:4000/delete/${id}`, {
       method: 'DELETE',
     })

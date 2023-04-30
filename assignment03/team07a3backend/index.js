@@ -56,6 +56,30 @@ app.post('/insert', async (req, res) => {
     }
 });
 
+app.put('/update/:id', async (req, res) => {
+    const query = { _id: req.params.id };
+    const parsedProduct = { $set: {
+        title: req.body.title,
+        price: req.body.price,
+        description: req.body.description,
+        category: req.body.category,
+        image: req.body.image,
+        rating: {
+            rate: req.body.averageRating,
+            count: req.body.ratingCount
+        }
+    }}
+    console.log(parsedProduct)
+    try {
+        await Products.updateOne(query, parsedProduct);
+        const message = {message: `Product ${req.params.id} updated`};
+        console.log(message)
+        res.send(message);
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 app.delete('/delete/:id', async (req, res) => {
     const query = { _id: req.params.id };
     try {
