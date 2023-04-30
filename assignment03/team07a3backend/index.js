@@ -1,14 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const Products = require('./dataSchema.js');
 const app = express();
-const Products = require('./dataSchema');
 const path = require("path");
 
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/reactdata',
+mongoose.connect('mongodb://127.0.0.1:27017/reactdata',
     {
         dbName: 'reactdata',
         useNewUrlParser: true,

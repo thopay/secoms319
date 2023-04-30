@@ -25,6 +25,9 @@ const Nav = ({ currentPage, setCurrentPage }) => {
           <p onClick={() => handleLinkClick("delete")} className={`block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white hover:cursor-pointer mr-4 ${currentPage === "delete" ? "text-white font-bold border-b-4 border-white" : "border-b-4 border-transparent"}`}>
             Delete
           </p>
+          <p onClick={() => handleLinkClick("credits")} className={`block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white hover:cursor-pointer mr-4 ${currentPage === "credits" ? "text-white font-bold border-b-4 border-white" : "border-b-4 border-transparent"}`}>
+            Credits
+          </p>
         </div>
       </div>
     </nav>
