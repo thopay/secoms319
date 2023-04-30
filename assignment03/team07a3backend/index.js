@@ -24,6 +24,14 @@ app.get('/', async (req, res) => {
     res.send(allProducts);
 });
 
+app.get('/:id', async (req, res) => {
+    const query = { _id: req.params.id };
+
+    const product = await Products.find(query);
+    console.log(product);
+    res.send(product);
+});
+
 const port = process.env.PORT || 4000;
 const host =  'localhost';
 
