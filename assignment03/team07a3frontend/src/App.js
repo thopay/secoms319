@@ -1,5 +1,6 @@
 import './App.css';
 import Nav from './components/Nav';
+import Create from './components/Create';
 import { useState } from 'react';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
     <div className="bg-gray-100">
       <Nav currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Create />
     </div>
   );
 }
