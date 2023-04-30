@@ -32,6 +32,41 @@ app.get('/:id', async (req, res) => {
     res.send(product);
 });
 
+app.post('/insert', async (req, res) => {
+    const parsedProduct = {
+        _id: req.body.pid,
+        title: req.body.title,
+        price: req.body.price,
+        description: req.body.description,
+        category: req.body.category,
+        image: req.body.image,
+        rating: {
+            rate: req.body.averageRating,
+            count: req.body.ratingCount
+        }
+    }
+    const newProduct = new Products(parsedProduct);
+    try {
+        await Products.create(newProduct);
+        const message = {message: `Product ${newProduct._id} inserted`};
+        res.send(message);
+    } catch (err) {
+        console.log(err);
+        res.send(err);
+    }
+});
+
+app.delete('/delete/:id', async (req, res) => {
+    const query = { _id: req.params.id };
+    try {
+        await Products.deleteOne(query);
+        const message = {message: `Product ${req.params.id} deleted`};
+        res.send(message);
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 const port = process.env.PORT || 4000;
 const host =  'localhost';
 

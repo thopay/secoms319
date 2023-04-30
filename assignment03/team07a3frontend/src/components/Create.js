@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function Create() {
   const [product, setProduct] = useState({
+    pid: '',
     title: '',
     price: '',
     description: '',
@@ -24,10 +25,20 @@ function Create() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('https://example.com/api/products', product)
+    fetch('http://localhost:4000/insert', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product)
+    })
       .then(response => {
         console.log(response);
       })
+      .then(data => {
+        console.log("New product added");
+        console.log(data)
+    })
       .catch(error => {
         console.log(error);
       });
@@ -37,6 +48,20 @@ function Create() {
     <div className="flex justify-center items-center h-screen bg-gray-200">
       <form className="bg-white p-6 rounded-lg shadow-md w-1/2" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-4">Add Product</h2>
+        <div className="mb-4 w-full">
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="pid">
+            ID
+          </label>
+          <input
+            className="border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+            id="pid"
+            type="number"
+            placeholder="Product ID"
+            name="pid"
+            value={product.id}
+            onChange={handleChange}
+          />
+        </div>
         <div className="mb-4 w-full">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="title">
             Title
