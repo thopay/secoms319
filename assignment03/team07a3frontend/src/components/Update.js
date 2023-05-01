@@ -148,9 +148,9 @@ function Update() {
             onChange={handleChange}
           >
             <option value="">--Select a category--</option>
+            <option value="mens_clothing">Men's Clothing</option>
+            <option value="jewelry">Jewelry</option>
             <option value="electronics">Electronics</option>
-            <option value="clothing">Clothing</option>
-            <option value="home">Home</option>
           </select>
         </div>
         <div className="mb-4">

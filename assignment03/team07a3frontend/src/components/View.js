@@ -91,8 +91,6 @@ const View = () => {
         className="border border-gray-400 rounded-md px-4 py-2 my-4 ml-3"
       />
 
-      <h1 className="text-2xl font-bold my-8">Show all available products.</h1>
-      <hr className="my-8" />
       {viewer1 && <div className="my-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">{showAllItems}</div>}
       <hr className="my-8" />
       <h1>Product by ID:</h1>

@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Delete = () => {
-    const [product, setProduct] = useState([]);
-
-
+const Credits = () => {
 
     return (
         <div class="bg-gray-100 min-h-screen">
@@ -67,4 +64,4 @@ const Delete = () => {
     );
 };
 
-export default Delete;
+export default Credits;
