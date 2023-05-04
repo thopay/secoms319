@@ -1,26 +1,32 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const Products = require('./dataSchema.js');
+const {Products, Sellers} = require('./dataSchema.js');
 const app = express();
 const path = require("path");
 
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb://127.0.0.1:27017/reactdata',
+mongoose.connect('mongodb://127.0.0.1:27017/finaldata',
     {
-        dbName: 'reactdata',
+        dbName: 'finaldata',
         useNewUrlParser: true,
         useUnifiedTopology: true,
     }
 );
 
-app.get('/', async (req, res) => {
+app.get('/products', async (req, res) => {
     const query = {};
 
     const allProducts = await Products.find(query);
-    console.log(allProducts);
+    res.send(allProducts);
+});
+
+app.get('/sellers', async (req, res) => {
+    const query = {};
+
+    const allProducts = await Sellers.find(query);
     res.send(allProducts);
 });
 

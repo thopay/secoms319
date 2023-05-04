@@ -1,8 +1,8 @@
-import React, { useState } from 'react'; // Added useState import
+import React from 'react'; // Added useState import
+import Filters from './Filters';
+import { useState, useEffect } from 'react'; // Added useState import
 
-function ProductView({pageView, setPageView, quantities, setQuantities}) {
-    const [searchQuery, setSearchQuery] = useState("");
-    const [products, setProducts] = useState([]);
+function ProductView({searchQuery, quantities, setQuantities, products, brandIndex }) {
     // This function decrements the quantity of a product at a given index
     const handleDecrement = (index) => {
         // Create a copy of the quantities array
@@ -15,43 +15,21 @@ function ProductView({pageView, setPageView, quantities, setQuantities}) {
         }
     };
 
+
     const handleIncrement = (index) => {
         const newQuantities = [...quantities];
         newQuantities[index] += 1;
-        console.log(newQuantities);
         setQuantities(newQuantities);
     };
-    // Update pageView state to "checkout" when the Checkout button is clicked
-    const handleCheckoutClick = () => {
-        if (quantities.reduce((a, b) => a + b, 0) > 0) {
-            setPageView(1);
-        } else {
-            alert("Please add items to your cart before checking out.");
-        }
-    };
+
+    const [category, setCategory] = useState("");
+    const [brand, setBrand] = useState("");
+    const categories = [...new Set(products.map(product => product.category))];
+    const brands = [...new Set(products.map(product => brandIndex[product.seller_id].title))];
 
     return (
         <div>
-            <nav className="flex justify-between items-center bg-gray-800 text-white p-6">
-                <div className="flex items-center">
-                    <div className="flex items-center">
-                        <label htmlFor="search" className="mr-2">Search:</label>
-                        <input
-                            type="text"
-                            id="search"
-                            placeholder="iPhone"
-                            className="rounded-lg p-2 text-black"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-                    </div>
-                </div>
-                <div className="flex items-center">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg" onClick={handleCheckoutClick}>
-                        Checkout
-                    </button>
-                </div>
-            </nav>
+            <Filters categories={categories} brands={brands} setCategory={setCategory} setBrand={setBrand} />
             <div
                 className="p-4"
                 style={{
@@ -61,7 +39,11 @@ function ProductView({pageView, setPageView, quantities, setQuantities}) {
                     justifyContent: "center",
                 }}
             >
-                {products.filter(product => product.title.toLowerCase().includes(searchQuery)).map((product, index) => (
+                {products.filter(product => product.title.toLowerCase().includes(searchQuery)).filter(
+                    product => category === "" || product.category === category
+                ).filter(
+                    product => brand === "" || brandIndex[product.seller_id].title === brand
+                ).map((product, index) => (
                     <div
                         key={index}
                         className="bg-white rounded-lg shadow-lg overflow-hidden"
@@ -69,13 +51,16 @@ function ProductView({pageView, setPageView, quantities, setQuantities}) {
                     >
                         <img
                             className="w-full"
-                            src={product.image}
+                            src={'http://localhost:4000' + product.image}
                             alt={product.title}
-                            style={{ height: "250px", objectFit: "cover" }}
+                            style={{ height: "250px", objectFit: "contain" }}
                         />
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2">
                                 {product.title}
+                            </div>
+                            <div className="italic text-m mb-2">
+                                {brandIndex[product.seller_id].title}
                             </div>
                             <p className="text-gray-700 text-base">
                                 ${product.price.toFixed(2)}
