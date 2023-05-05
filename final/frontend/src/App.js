@@ -122,7 +122,7 @@ const App = () => {
         setPageView(0);
     };
 
-    const clearInfo = () => {
+    const clearInfo = (resetCart = 0) => {
         setFullName("");
         setEmail("");
         setCreditCard("");
@@ -134,7 +134,9 @@ const App = () => {
         setEmailError(false);
         setCreditCardError(false);
         setZipCodeError(false);
-        setQuantities(Array(products.length).fill(0));
+        if (resetCart) {
+            setQuantities(Array(products.length).fill(0));
+        }
     };
 
         // Update pageView state to "checkout" when the Checkout button is clicked
@@ -160,9 +162,9 @@ const App = () => {
             <>
                 <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleCheckoutClick={handleCheckoutClick} pageView={pageView} clearInfo={clearInfo} handleBrowseClick={handleBrowseClick} />
                 <CheckoutView 
-                    handleBrowseClick={handleBrowseClick} 
                     products={products}
                     quantities={quantities}
+                    setQuantities={setQuantities}
                     fullName={fullName}
                     setFullName={setFullName}
                     emailError={emailError}

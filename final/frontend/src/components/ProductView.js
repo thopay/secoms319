@@ -1,6 +1,6 @@
 import React from 'react'; // Added useState import
 import Filters from './Filters';
-import { useState, useEffect } from 'react'; // Added useState import
+import { useState } from 'react'; // Added useState import
 
 function ProductView({searchQuery, quantities, setQuantities, products, brandIndex }) {
     // This function decrements the quantity of a product at a given index

@@ -22,7 +22,11 @@ function Nav({searchQuery, setSearchQuery, handleCheckoutClick, pageView, clearI
                 </button>
             )}
             {(pageView === 1 || pageView === 2) && (
-                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg" onClick={() => { clearInfo(); handleBrowseClick(); }}>
+                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg" onClick={() => { 
+                    if (pageView === 2) {
+                        clearInfo(); 
+                    }
+                    handleBrowseClick(); }}>
                     Back to Browse
                 </button>
             )}

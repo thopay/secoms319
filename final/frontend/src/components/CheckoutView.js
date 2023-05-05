@@ -1,34 +1,94 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function CheckoutView({
-        handleBrowseClick, 
-        products, 
-        quantities, 
-        fullName, 
-        setFullName, 
-        emailError,
-        email,
-        setEmail,
-        setEmailError,
-        creditCard,
-        setCreditCard,
-        creditCardError,
-        setCreditCardError,
-        address1,
-        setAddress1,
-        address2,
-        setAddress2,
-        city,
-        setCity,
-        state,
-        setState,
-        zipCode,
-        setZipCode,
-        zipCodeError,
-        setZipCodeError,
-        handleOrderConfirmationClick,
-    }) {
-    
+    products,
+    quantities,
+    setQuantities,
+    fullName,
+    setFullName,
+    emailError,
+    email,
+    setEmail,
+    setEmailError,
+    creditCard,
+    setCreditCard,
+    creditCardError,
+    setCreditCardError,
+    address1,
+    setAddress1,
+    address2,
+    setAddress2,
+    city,
+    setCity,
+    state,
+    setState,
+    zipCode,
+    setZipCode,
+    zipCodeError,
+    setZipCodeError,
+    handleOrderConfirmationClick,
+}) {
+
+    const salesTaxKey = {
+        "Alabama": 0.04,
+        "Alaska": 0.00,
+        "Arizona": 0.056,
+        "Arkansas": 0.065,
+        "California": 0.0725,
+        "Colorado": 0.029,
+        "Connecticut": 0.0635,
+        "Delaware": 0.00,
+        "District Of Columbia": 0.0575,
+        "Florida": 0.06,
+        "Georgia": 0.04,
+        "Hawaii": 0.04,
+        "Idaho": 0.06,
+        "Illinois": 0.0625,
+        "Indiana": 0.07,
+        "Iowa": 0.06,
+        "Kansas": 0.065,
+        "Kentucky": 0.06,
+        "Louisiana": 0.0445,
+        "Maine": 0.055,
+        "Maryland": 0.06,
+        "Massachusetts": 0.0625,
+        "Michigan": 0.06,
+        "Minnesota": 0.06875,
+        "Mississippi": 0.07,
+        "Missouri": 0.04225,
+        "Montana": 0.00,
+        "Nebraska": 0.0555,
+        "Nevada": 0.0685,
+        "New Hampshire": 0.00,
+        "New Jersey": 0.06625,
+        "New Mexico": 0.05125,
+        "New York": 0.04,
+        "North Carolina": 0.0475,
+        "North Dakota": 0.05,
+        "Ohio": 0.0575,
+        "Oklahoma": 0.045,
+        "Oregon": 0.00,
+        "Pennsylvania": 0.06,
+        "Rhode Island": 0.07,
+        "South Carolina": 0.06,
+        "South Dakota": 0.04,
+        "Tennessee": 0.0975,
+        "Texas": 0.0625,
+        "Utah": 0.0485,
+        "Vermont": 0.06,
+        "Virginia": 0.053,
+        "Washington": 0.065,
+        "West Virginia": 0.06,
+        "Wisconsin": 0.05,
+        "Wyoming": 0.04
+    }
+
+    const [salesTax, setSalesTax] = useState(0);
+    // Use useEffect to update the sales tax when the state changes
+    useEffect((salesTaxKey) => {
+        setSalesTax(salesTaxKey[Object.keys(salesTaxKey)[state - 1]]);
+    }, [state]);
+
     return (
         <div>
             <div
@@ -40,52 +100,82 @@ function CheckoutView({
                     justifyContent: "center",
                 }}
             >
-                <table className="table-auto">
-                    <thead>
-                        <tr>
-                            <th className="px-4 py-2">Item</th>
-                            <th className="px-4 py-2">Name</th>
-                            <th className="px-4 py-2">Quantity</th>
-                            <th className="px-4 py-2 text-right">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {products.map((product, index) => (
-                            // Only render the product if the quantity is greater than 1
-                            quantities[index] >= 1 && (
-                                <tr key={index}>
-                                    <td className="border px-4 py-2">
-                                        <img
-                                            className="w-full"
-                                            src={'http://localhost:4000' + product.image}
-                                            alt={product.title}
-                                            style={{ height: "125px", width: "125px", objectFit: "contain" }}
-                                        />
-                                    </td>
-                                    <td className="border px-4 py-2">{product.title}</td>
-                                    <td className="border px-4 py-2">{quantities[index]}</td>
-                                    {quantities[index] > 1 ? (
-                                        <td className="border px-4 py-2 text-right">{quantities[index]} x ${product.price.toFixed(2)} = ${(product.price * quantities[index]).toFixed(2)}</td>
-                                    ) : (
-                                        <td className="border px-4 py-2 text-right">${product.price.toFixed(2)}</td>
-                                    )}
-                                </tr>
-                            )
-                        ))}
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td className="border px-4 py-2 text-right">Sales Tax (6.25%): ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * 0.0625).toFixed(2)}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td className="border px-4 py-2 font-bold text-right">Total: ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * 1.0625).toFixed(2)}</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+<table className="table-auto">
+    <thead>
+        <tr>
+            <th className="px-4 py-2"></th>
+            <th className="px-4 py-2">Item</th>
+            <th className="px-4 py-2">Name</th>
+            <th className="px-4 py-2">Quantity</th>
+            <th className="px-4 py-2 text-right">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {products.map((product, index) => (
+            // Only render the product if the quantity is greater than 1
+            quantities[index] >= 1 && (
+                <tr key={index}>
+                    <td className="border px-4 py-2">
+                        <button onClick={() => {
+                            if (window.confirm("Are you sure you would like to remove the item from cart?")) {
+                                const newQuantities = [...quantities];
+                                newQuantities[index] = 0;
+                                setQuantities(newQuantities);
+                            }
+                        }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </td>
+                    <td className="border px-4 py-2">
+                        <img
+                            className="w-full"
+                            src={'http://localhost:4000' + product.image}
+                            alt={product.title}
+                            style={{ height: "125px", width: "125px", objectFit: "contain" }}
+                        />
+                    </td>
+                    <td className="border px-4 py-2">{product.title}</td>
+                    <td className="border px-4 py-2">
+                        <input
+                            type="number"
+                            min="1"
+                            value={quantities[index]}
+                            onChange={(e) => {
+                                const newQuantities = [...quantities];
+                                newQuantities[index] = parseInt(e.target.value);
+                                setQuantities(newQuantities);
+                            }}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"
+                        />
+                    </td>
+                    {quantities[index] > 1 ? (
+                        <td className="border px-4 py-2 text-right">{quantities[index]} x ${product.price.toFixed(2)} = ${(product.price * quantities[index]).toFixed(2)}</td>
+                    ) : (
+                        <td className="border px-4 py-2 text-right">${product.price.toFixed(2)}</td>
+                    )}
+                </tr>
+            )
+        ))}
+        {state !== "" && <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td className="border px-4 py-2 text-right">Sales Tax for {Object.keys(salesTaxKey)[state - 1]} ({salesTax*100}%): ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * salesTax).toFixed(2)}</td>
+        </tr>}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td className="border px-4 py-2 font-bold text-right">Total: ${(products.reduce((total, product, index) => total + (quantities[index] * product.price), 0) * (1 + salesTax)).toFixed(2)}</td>
+        </tr>
+    </tbody>
+</table>
+
             </div>
             <div className="w-full mt-4" style={{
                 display: "flex",
