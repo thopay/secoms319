@@ -26,8 +26,7 @@ function ProductView({searchQuery, quantities, setQuantities, products, brandInd
     const [brand, setBrand] = useState("");
     const categories = [...new Set(products.map(product => product.category))];
     const brands = [...new Set(products.map(product => {
-        console.log(brandIndex);
-        console.log(product);
+        console.log(product.seller_id);
         return brandIndex[product.seller_id].title;
     }))];
 

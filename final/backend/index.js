@@ -16,6 +16,27 @@ mongoose.connect('mongodb://127.0.0.1:27017/finaldata',
     }
 );
 
+app.post('/insert', async (req, res) => {
+    const parsedProduct = {
+        _id: req.body.pid,
+        title: req.body.title,
+        price: req.body.price,
+        description: req.body.description,
+        image: req.body.image,
+        seller_id: req.body.seller_id,
+        category: req.body.category,
+    }
+    const newProduct = new Products(parsedProduct);
+    try {
+        await Products.create(newProduct);
+        const message = {message: `Product ${newProduct._id} inserted`};
+        res.send(message);
+    } catch (err) {
+        console.log(err);
+        res.send(err);
+    }
+});
+
 app.get('/products', async (req, res) => {
     const query = {};
 

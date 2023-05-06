@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
     description: {type: String},
     image: {type: String},
     seller_id: {type: Number},
+    category: {type: String},
 }, {collection: 'product_catalog'});
 
 const sellerSchema = new mongoose.Schema({

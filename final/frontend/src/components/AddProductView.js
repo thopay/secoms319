@@ -6,9 +6,9 @@ function AddProductView() {
     title: '',
     price: '',
     description: '',
-    category: '',
     image: '',
     seller_id: '',
+    category: '',
   });
 
   const handleChange = (event) => {
@@ -116,21 +116,18 @@ function AddProductView() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="category">
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="seller_id">
             Seller ID
           </label>
-          <select
+          <input
             className="border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
-            id="category"
-            name="category"
+            id="seller_id"
+            type="number"
+            placeholder="Seller ID"
+            name="seller_id"
             value={product.seller_id}
             onChange={handleChange}
-          >
-            <option value="">Select a category</option>
-            <option value="mens_clothing">Men's Clothing</option>
-            <option value="jewelry">Jewelry</option>
-            <option value="electronics">Electronics</option>
-          </select>
+          />
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="category">
@@ -144,9 +141,9 @@ function AddProductView() {
             onChange={handleChange}
           >
             <option value="">Select a category</option>
-            <option value="mens_clothing">Men's Clothing</option>
-            <option value="jewelry">Jewelry</option>
-            <option value="electronics">Electronics</option>
+            <option value="Tops">Tops</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Skate">Skate</option>
           </select>
         </div>
         
