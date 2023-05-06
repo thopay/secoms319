@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductView from "./components/ProductView";
 import CheckoutView from "./components/CheckoutView";
+import AddProductView from "./components/AddProductView";
 import OrderConfirmationView from "./components/OrderConfirmationView";
 import Nav from "./components/Nav";
 
@@ -148,11 +149,15 @@ const App = () => {
             }
         };
 
+        const handleAddProductClick = () => {
+            setPageView(3);
+        };
+
     if (pageView === 0) {
         // Product View
         return (
             <>
-                <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleCheckoutClick={handleCheckoutClick} pageView={pageView} clearInfo={clearInfo} handleBrowseClick={handleBrowseClick} />
+                <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleCheckoutClick={handleCheckoutClick} pageView={pageView} clearInfo={clearInfo} handleBrowseClick={handleBrowseClick} handleAddProductClick={handleAddProductClick} />
                 <ProductView searchQuery={searchQuery} quantities={quantities} setQuantities={setQuantities} products={products} brandIndex={brandIndex}/>
             </>
         );
@@ -160,7 +165,7 @@ const App = () => {
         // Checkout View
         return (
             <>
-                <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleCheckoutClick={handleCheckoutClick} pageView={pageView} clearInfo={clearInfo} handleBrowseClick={handleBrowseClick} />
+                <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleCheckoutClick={handleCheckoutClick} pageView={pageView} clearInfo={clearInfo} handleBrowseClick={handleBrowseClick} handleAddProductClick={handleAddProductClick}/>
                 <CheckoutView 
                     products={products}
                     quantities={quantities}
@@ -195,7 +200,7 @@ const App = () => {
         // Order Confirmation View
         return (
             <>
-                <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleCheckoutClick={handleCheckoutClick} pageView={pageView} clearInfo={clearInfo} handleBrowseClick={handleBrowseClick} />
+                <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleCheckoutClick={handleCheckoutClick} pageView={pageView} clearInfo={clearInfo} handleBrowseClick={handleBrowseClick} handleAddProductClick={handleAddProductClick}/>
                 <OrderConfirmationView 
                     clearInfo={clearInfo}
                     handleBrowseClick={handleBrowseClick}
@@ -213,6 +218,14 @@ const App = () => {
             </>
         );
 
+    } else if (pageView === 3) {
+        // Add Product View
+        return (
+        <>
+            <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleCheckoutClick={handleCheckoutClick} pageView={pageView} clearInfo={clearInfo} handleBrowseClick={handleBrowseClick} handleAddProductClick={handleAddProductClick}/>
+            <AddProductView/>
+        </>
+        );
     }
 };
 

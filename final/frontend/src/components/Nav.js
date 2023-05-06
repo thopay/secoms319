@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Nav({searchQuery, setSearchQuery, handleCheckoutClick, pageView, clearInfo, handleBrowseClick}) {
+function Nav({searchQuery, setSearchQuery, handleCheckoutClick, pageView, clearInfo, handleBrowseClick, handleAddProductClick}) {
   return (
     <nav className="flex justify-between items-center bg-gray-800 text-white p-6">
         <div className="flex items-center">
@@ -16,10 +16,15 @@ function Nav({searchQuery, setSearchQuery, handleCheckoutClick, pageView, clearI
             </div>
         </div>
         <div className="flex items-center">
-{pageView === 0 && (
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg" onClick={handleCheckoutClick}>
-                    Checkout
-                </button>
+            {pageView === 0 && (
+                <>
+                  <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg mr-4" onClick={handleAddProductClick}>
+                      Add Product
+                  </button>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg" onClick={handleCheckoutClick}>
+                      Checkout
+                  </button>
+                </>
             )}
             {(pageView === 1 || pageView === 2) && (
                 <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg" onClick={() => { 
