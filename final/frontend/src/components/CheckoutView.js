@@ -85,7 +85,11 @@ function CheckoutView({
 
     const [salesTax, setSalesTax] = useState(0);
     // Use useEffect to update the sales tax when the state changes
-   
+    useEffect(() => {
+        if (state !== 0) {
+            setSalesTax(salesTaxKey[Object.keys(salesTaxKey)[state - 1]]);
+        }
+    }, [state]);
 
     return (
         <div>
