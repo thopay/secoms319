@@ -1,0 +1,49 @@
+[{
+  "_id": 1,
+  "title": "Trucker Jacket",
+  "price": 368,
+  "description": "Coogi® knit cotton and suede with jacquard logo viscose lining. Button front closure with on seam hand pockets at lower front and button flap patch pockets at chest. Tab adjusters at cuffs and back hem with leather logo patch. Logo appliqué at back.",
+  "image": "/images/trucker_jacket.webp",
+  "seller_id": 1,
+  "category": "Tops"
+},{
+  "_id": 2,
+  "title": "Cherries Shirt",
+  "price": 148,
+  "description": "Viscose with printed pattern and single chest pocket.",
+  "image": "/images/cherries_shirt.webp",
+  "seller_id": 1,
+  "category": "Tops"
+},{
+  "_id": 3,
+  "title": "Kermit Chair",
+  "price": 398,
+  "description": "Lightweight wooden foldable camping chair. Tennessee-sourced white oak frame dipped in marine-grade polyurethane. Aluminum and stainless steel hardware. 1000D coated nylon cover with printed logo. 19″ x 23″ with 12.5″ seat height. Packable into 22″x 6″ bag. Maximum capacity 350 lbs. Made in the USA exclusively for Supreme.",
+  "image": "/images/chair.webp",
+  "seller_id": 1,
+  "category": "Furniture"
+},{
+  "_id": 4,
+  "title": "Overdyed Sweatshirt",
+  "price": 158,
+  "description": "Brushed-back fleece with pouch pocket. Embroidered logos on chest and hood.",
+  "image": "/images/sweatshirt.jpg",
+  "seller_id": 1,
+  "category": "Tops"
+},{
+  "_id": 5,
+  "title": "Strawberries Skateboard",
+  "price": 60,
+  "description": "Supreme skate deck with natural veneer and black top ply. Printed graphic on bottom with printed World Famous and box logo on top.",
+  "image": "/images/skateboard.webp",
+  "seller_id": 1,
+  "category": "Skate"
+},{
+  "_id": 6,
+  "title": "Vars Hammer Leather Over Bomber Jacket",
+  "price": 3925,
+  "description": "Black leather varsity featuring green and blue Off-White patches and two flat pockets at front. Green and Blue diagonal patches on the black sleeves. Blue patches featuring Hammer and Off-White logo at back. Spread collar. Silver zip up closure.",
+  "image": "/images/offwhite_jacket.jpg",
+  "seller_id": 2,
+  "category": "Tops"
+}]
