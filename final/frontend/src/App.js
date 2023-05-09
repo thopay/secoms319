@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductView from "./components/ProductView";
 import CheckoutView from "./components/CheckoutView";
-import AddProductView from "./components/AddProductView";
+import ProductsView from "./components/ProductsView";
 import OrderConfirmationView from "./components/OrderConfirmationView";
 import Nav from "./components/Nav";
 
@@ -223,7 +223,7 @@ const App = () => {
         return (
         <>
             <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleCheckoutClick={handleCheckoutClick} pageView={pageView} clearInfo={clearInfo} handleBrowseClick={handleBrowseClick} handleAddProductClick={handleAddProductClick}/>
-            <AddProductView/>
+            <ProductsView/>
         </>
         );
     }

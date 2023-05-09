@@ -19,7 +19,7 @@ function Nav({searchQuery, setSearchQuery, handleCheckoutClick, pageView, clearI
             {pageView === 0 && (
                 <>
                   <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg mr-4" onClick={handleAddProductClick}>
-                      Add Product
+                      Products
                   </button>
                   <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg" onClick={handleCheckoutClick}>
                       Checkout

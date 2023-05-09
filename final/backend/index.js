@@ -37,11 +37,55 @@ app.post('/insert', async (req, res) => {
     }
 });
 
+app.delete('/delete', async (req, res) => {
+    const query = { _id: req.body.pid };
+    try {
+        await Products.deleteOne(query);
+        const message = {message: `Product ${query._id} deleted`};
+        res.send(message)
+    } catch (err) {
+        console.log(err);
+        res.send(err)
+    }
+})
+
 app.get('/products', async (req, res) => {
     const query = {};
 
     const allProducts = await Products.find(query);
     res.send(allProducts);
+});
+
+app.get('/product/:id', async (req, res) => {
+    const query = { _id: req.params.id };
+
+    try {
+        const product = await Products.find(query);
+        res.send(product)
+    } catch (err) {
+        res.send(err)
+    }
+});
+
+app.put('/update', async (req, res) => {
+    const query = { _id: req.body.pid };
+    const parsedProduct = { $set: {
+        title: req.body.title,
+        price: req.body.price,
+        description: req.body.description,
+        image: req.body.image,
+        seller_id: req.body.seller_id,
+        category: req.body.category
+    }}
+    console.log(parsedProduct)
+    try {
+        await Products.updateOne(query, parsedProduct);
+        const message = {message: `Product ${req.body.pid} updated`};
+        console.log(message)
+        res.send(message);
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 app.get('/sellers', async (req, res) => {
